@@ -4,3 +4,4 @@ dist/
 tsconfig.json
 tsconfig.node.json
 .github/
+vitest.config.ts

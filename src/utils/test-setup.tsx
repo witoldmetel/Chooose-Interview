@@ -5,12 +5,13 @@ afterEach(() => {
   cleanup();
 });
 
-const customRender = (ui: React.ReactElement, options = {}) =>
-  render(ui, {
+function customRender(ui: React.ReactElement, options = {}) {
+  return render(ui, {
     // wrap provider(s) here if needed
     wrapper: ({ children }) => children,
     ...options,
   });
+}
 
 // eslint-disable-next-line react-refresh/only-export-components
 export * from '@testing-library/react';

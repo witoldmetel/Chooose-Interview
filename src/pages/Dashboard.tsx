@@ -2,7 +2,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { Center, Container, SimpleGrid, Spinner } from '@chakra-ui/react';
 
 import { Card, ErrorLabel } from '../core/components';
-import useTrips from '../core/hooks/useTrips';
+import { useTrips } from '../core/hooks/useTrips';
 
 export const Dashboard = () => {
   const { data, fetchNextPage, hasNextPage, isLoading, isError } = useTrips();
