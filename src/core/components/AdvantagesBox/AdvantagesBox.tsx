@@ -13,9 +13,9 @@ export const AdvantagesBox = ({ advantages }: AdvantagesBoxProps) => {
   const advantagesIcons: IconType[] = [RiFlag2Line, IoEarthOutline, GoBriefcase, GrGroup];
 
   return (
-    <SimpleGrid columns={2}>
+    <SimpleGrid columns={{ base: 1, md: 2 }}>
       {advantages.map((advantage, index) => (
-        <HStack key={advantage.title} alignItems="flex-start" my={6}>
+        <HStack key={advantage.title} alignItems="flex-start" my={{ base: 3, md: 6 }}>
           <Icon as={advantagesIcons[index]} fontSize={32} />
           <VStack alignItems="flex-start" mx="8px">
             <Text fontWeight="bold" fontSize="20px">

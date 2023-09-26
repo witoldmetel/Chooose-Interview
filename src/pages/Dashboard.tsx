@@ -7,12 +7,12 @@ import useTrips from '../core/hooks/useTrips';
 export const Dashboard = () => {
   const { data, fetchNextPage, hasNextPage, isLoading, isError } = useTrips();
 
-  if (!isError) {
+  if (isError) {
     return <ErrorLabel />;
   }
 
   return (
-    <Container maxW="fit" p="10px">
+    <Container maxW="fit" py="5" px={{ base: '0' }}>
       {data && !isLoading ? (
         <InfiniteScroll
           next={fetchNextPage}

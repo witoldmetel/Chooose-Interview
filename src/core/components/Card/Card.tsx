@@ -18,7 +18,7 @@ export const Card = ({ cardId, title, countriesLength, days, rating, co2kilogram
   const navigate = useNavigate();
 
   return (
-    <Box p={3} bg="#fff" rounded="xl">
+    <Box p={3} m={2} bg="#fff" rounded="xl" boxShadow="xl">
       <ChakraCard bgImage={bgImage} bgSize="cover" bgPosition="50%" boxShadow="none" h="100%">
         <CardBody w="100%" h="100%" p={0}>
           <Flex alignItems="center" flexDirection="column" w="100%" h="100%">

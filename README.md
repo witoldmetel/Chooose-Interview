@@ -58,3 +58,7 @@ Run unit tests
 ```
 yarn test
 ```
+
+## Additional notes
+
+1. Responsive views were tested on Chrome (Version 116.0.5845.187) using this [Responsive Viewer](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb)

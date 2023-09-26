@@ -7,7 +7,16 @@ type EmissionBoxProps = Pick<Trip, 'days' | 'co2kilograms' | 'countries'>;
 
 export const EmissionBox = ({ days, co2kilograms, countries }: EmissionBoxProps) => {
   return (
-    <Box display="flex" flexDirection="column" bg="#fff" p={4} rounded="lg" border="3px solid #F0F2F2" width="100%">
+    <Box
+      display="flex"
+      flexDirection="column"
+      bg="#fff"
+      p={4}
+      rounded="lg"
+      border="3px solid #F0F2F2"
+      width="100%"
+      marginTop={{ base: '20px', sm: '0px' }}
+    >
       <Text fontSize="x-large" fontWeight="bold">
         {getPluralName('day', days)}
       </Text>

@@ -6,9 +6,9 @@ import {
   Container,
   Divider,
   Heading,
-  HStack,
   Image,
   Spinner,
+  Stack,
   Text,
   VStack,
 } from '@chakra-ui/react';
@@ -21,12 +21,12 @@ export const Trip = () => {
   const { id } = useParams<{ id: string }>();
   const { data, isLoading, isError } = useTrip({ tripId: Number(id) });
 
-  if (!isError) {
+  if (isError) {
     return <ErrorLabel />;
   }
 
   return (
-    <Container maxW="fit-content">
+    <Container maxW="fit" py="5" px={{ base: '5' }}>
       <Button
         color="#8F999F"
         fontWeight="bold"
@@ -45,26 +45,24 @@ export const Trip = () => {
           <Text color="#8F999F" fontWeight="semibold" fontSize="16px">
             {data.subtitle}
           </Text>
-          <HStack alignItems="flex-start" marginTop="20px" gap="50px">
+          <Stack flexDirection={{ base: 'column', sm: 'row' }} alignItems="flex-start" marginTop="20px" gap="5%">
             {/* FIRST COLUMN */}
-            <VStack alignItems="flex-start" w="70%">
-              <Box textDecoration="none" _hover={{ textDecoration: 'none' }} w="100%">
+            <VStack alignItems="flex-start" w={{ base: '100%', md: '60%', lg: '50%' }}>
+              <Box w="100%">
                 <Image borderRadius="lg" src={data.photoUrl} alt={data.title} objectFit="contain" w="100%" />
               </Box>
               <Text fontWeight="bold" fontSize="22px" marginTop="5">
                 Overview
               </Text>
               <AdvantagesBox advantages={data.advantages} />
-              <Divider my="4" borderColor="gray.300" />
-              <Text fontSize="18px" marginTop="5">
-                {data.description}
-              </Text>
+              <Divider my={{ base: 3, md: 4 }} borderColor="gray.300" />
+              <Text fontSize="18px">{data.description}</Text>
             </VStack>
             {/* SECOND COLUMN */}
-            <VStack w="30%">
+            <VStack w={{ base: '100%', md: '40%', lg: '30%' }}>
               <EmissionBox days={data.days} co2kilograms={data.co2kilograms} countries={data.countries} />
             </VStack>
-          </HStack>
+          </Stack>
         </>
       ) : (
         /**
