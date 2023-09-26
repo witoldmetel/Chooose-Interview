@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import RootLayout from './core/layouts/RootLayout';
 import { Dashboard } from './pages/Dashboard';
+import { NotFound } from './pages/NotFound';
 import { Trip } from './pages/Trip';
 
 const queryClient = new QueryClient({
@@ -19,6 +20,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Dashboard />} />
       <Route path="/trips/:id" element={<Trip />} />
+      <Route path="*" element={<NotFound />} />
     </Route>
   )
 );
