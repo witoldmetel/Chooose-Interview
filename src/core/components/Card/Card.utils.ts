@@ -10,6 +10,6 @@ export function convertKilosToTons(kilos: number): string {
   if (kilos > 1000) {
     return `${Math.round(tons * 10) / 10} t`;
   } else {
-    return `${kilos.toFixed(1)} kg`;
+    return `${parseFloat(kilos.toFixed(1))} kg`;
   }
 }

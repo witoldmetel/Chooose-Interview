@@ -8,9 +8,9 @@ Display data received from the endpoint and display them according to the mockup
 - [x] ChakraUI should be used for UI components.
 - [x] Data should be downloaded asynchronously from a mock server, serving JSON files (using any technology).
 - [ ] Details of a trip should be pulled from a separate single-trip endpoint.
-- [ ] New cards should be loaded on page scroll (infinite scrolling).
+- [x] New cards should be loaded on page scroll (infinite scrolling).
 - [ ] Data from the server should be cached and preserved between pages.
-- [ ] The code should be placed in any repository along with instructions on how to run the project.
+- [x] The code should be placed in any repository along with instructions on how to run the project.
 - [ ] Cover the code with tests.
 
 ## Getting Started
