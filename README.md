@@ -1,6 +1,6 @@
 # Chooose Interview
 
-Display data received from the endpoint and display them according to the mockups.
+Display data received from the endpoint according to the mockups.
 
 ## Project Requirements
 
