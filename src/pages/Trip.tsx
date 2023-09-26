@@ -13,13 +13,17 @@ import {
   VStack,
 } from '@chakra-ui/react';
 
-import { AdvantagesBox, EmissionBox } from '../core/components';
+import { AdvantagesBox, EmissionBox, ErrorLabel } from '../core/components';
 import { useTrip } from '../core/hooks/useTrip';
 
 export const Trip = () => {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
-  const { data, isLoading } = useTrip({ tripId: Number(id) });
+  const { data, isLoading, isError } = useTrip({ tripId: Number(id) });
+
+  if (!isError) {
+    return <ErrorLabel />;
+  }
 
   return (
     <Container maxW="fit-content">
