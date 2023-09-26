@@ -5,7 +5,14 @@ import RootLayout from './core/layouts/RootLayout';
 import { Dashboard } from './pages/Dashboard';
 import { Trip } from './pages/Trip';
 
-const client = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 10 * (60 * 1000), // 10 mins
+      cacheTime: 15 * (60 * 1000), // 15 mins
+    },
+  },
+});
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -18,7 +25,7 @@ const router = createBrowserRouter(
 
 function App() {
   return (
-    <QueryClientProvider client={client}>
+    <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
     </QueryClientProvider>
   );
