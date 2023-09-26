@@ -1,31 +1,35 @@
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
-import { Box, Icon } from '@chakra-ui/react';
+import { Box, Icon, Text } from '@chakra-ui/react';
 
 type RatingProps = {
   rating: number;
-  numReviews: number;
 };
 
-export const Rating = ({ rating, numReviews }: RatingProps) => {
+export const Rating = ({ rating }: RatingProps) => {
+  const stars = Array(5)
+    .fill('')
+    .map((_, index) => {
+      const roundedRating = Math.round(rating * 2) / 2;
+
+      if (roundedRating - index >= 1) {
+        return (
+          <Icon as={BsStarFill} key={index} style={{ marginLeft: '1' }} color={index < rating ? '#F7D039' : '#fff'} />
+        );
+      }
+
+      if (roundedRating - index === 0.5) {
+        return <Icon as={BsStarHalf} key={index} style={{ marginLeft: '1' }} color="#F7D039" />;
+      }
+
+      return <Icon as={BsStar} key={index} style={{ marginLeft: '1' }} color="#F7D039" />;
+    });
+
   return (
     <Box display="flex" alignItems="center">
-      {Array(5)
-        .fill('')
-        .map((_, i) => {
-          const roundedRating = Math.round(rating * 2) / 2;
-          if (roundedRating - i >= 1) {
-            return (
-              <Icon as={BsStarFill} key={i} style={{ marginLeft: '1' }} color={i < rating ? 'teal.500' : 'gray.300'} />
-            );
-          }
-          if (roundedRating - i === 0.5) {
-            return <Icon as={BsStarHalf} key={i} style={{ marginLeft: '1' }} />;
-          }
-          return <Icon as={BsStar} key={i} style={{ marginLeft: '1' }} />;
-        })}
-      <Box as="span" ml="2" color="gray.600" fontSize="sm">
-        {numReviews} review{numReviews > 1 && 's'}
-      </Box>
+      {stars}
+      <Text ml="2" fontSize="sm" color="#303547" fontWeight="bold">
+        {rating}
+      </Text>
     </Box>
   );
 };
