@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 import { sleep } from '../../utils/sleep';
+import { BASE_URL } from '../constants';
 import { Trip } from '../types';
 
-const BASE_URL = 'http://localhost:5000/trips';
 const PAGE_SIZE = 15;
 
 export const client = axios.create({

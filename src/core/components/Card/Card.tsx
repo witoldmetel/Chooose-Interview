@@ -1,8 +1,7 @@
 import { Box, Button, Card as ChakraCard, CardBody, Center, Flex, Spacer, Text } from '@chakra-ui/react';
 
+import { convertKilosToTons, getPluralName } from '../../../utils';
 import { Rating } from '../Rating/Rating';
-
-import { convertKilosToTons, getPluralName } from './Card.utils';
 
 type CardProps = {
   title: string;

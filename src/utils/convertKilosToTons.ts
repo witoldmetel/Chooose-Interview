@@ -1,9 +1,3 @@
-import pluralize from 'pluralize';
-
-export function getPluralName(word: string, count: number = 0): string {
-  return pluralize(word, count, true);
-}
-
 export function convertKilosToTons(kilos: number): string {
   const tons = kilos / 1000;
 
