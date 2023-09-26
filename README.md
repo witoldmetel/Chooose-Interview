@@ -11,7 +11,7 @@ Display data received from the endpoint and display them according to the mockup
 - [x] New cards should be loaded on page scroll (infinite scrolling).
 - [x] Data from the server should be cached and preserved between pages.
 - [x] The code should be placed in any repository along with instructions on how to run the project.
-- [ ] Cover the code with tests.
+- [x] Cover the code with tests.
 
 ## Getting Started
 
