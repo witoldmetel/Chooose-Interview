@@ -8,33 +8,29 @@ import {
   Heading,
   HStack,
   Image,
-  ListItem,
-  SimpleGrid,
   Spinner,
   Text,
-  UnorderedList,
   VStack,
 } from '@chakra-ui/react';
 
+import { AdvantagesBox, EmissionBox } from '../core/components';
 import { useTrip } from '../core/hooks/useTrip';
-import { convertKilosToTons, getPluralName } from '../utils';
 
 export const Trip = () => {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
-
   const { data, isLoading } = useTrip({ tripId: Number(id) });
 
   return (
-    <Container maxW="fit-content" h="100vh">
+    <Container maxW="fit-content">
       <Button
-        onClick={() => navigate(-1)}
         color="#8F999F"
         fontWeight="bold"
         fontSize="14px"
         mb="40px"
         variant="link"
         textDecoration="underline"
+        onClick={() => navigate(-1)}
       >
         Go back
       </Button>
@@ -49,53 +45,20 @@ export const Trip = () => {
             {/* FIRST COLUMN */}
             <VStack alignItems="flex-start" w="70%">
               <Box textDecoration="none" _hover={{ textDecoration: 'none' }} w="100%">
-                <Image borderRadius="lg" src={data.photoUrl} alt="some good alt text" objectFit="contain" w="100%" />
+                <Image borderRadius="lg" src={data.photoUrl} alt={data.title} objectFit="contain" w="100%" />
               </Box>
               <Text fontWeight="bold" fontSize="22px" marginTop="5">
                 Overview
               </Text>
-              <Divider my="4" />
+              <AdvantagesBox advantages={data.advantages} />
+              <Divider my="4" borderColor="gray.300" />
               <Text fontSize="18px" marginTop="5">
                 {data.description}
               </Text>
             </VStack>
             {/* SECOND COLUMN */}
             <VStack w="30%">
-              <Box
-                display="flex"
-                flexDirection="column"
-                bg="#fff"
-                p={4}
-                rounded="lg"
-                border="3px solid #F0F2F2"
-                width="100%"
-              >
-                <Text fontSize="x-large" fontWeight="bold">
-                  {getPluralName('day', data.days)}
-                </Text>
-                <HStack>
-                  <Text color="#8F999F" fontSize="sm" fontWeight="bold">
-                    Emissions:
-                  </Text>
-                  <Text color="#8F999F" fontSize="sm" fontWeight="bold">
-                    {`${convertKilosToTons(data.co2kilograms)} CO`}
-                    <sub>2</sub>e
-                  </Text>
-                </HStack>
-                <Divider my="4" />
-                <Text color="#8F999F" fontSize="sm" fontWeight="bold">
-                  {`${data.countries.length > 1 ? 'Countries' : 'County'} included:`}
-                </Text>
-                <UnorderedList>
-                  <SimpleGrid columns={2}>
-                    {data.countries.map((country) => (
-                      <ListItem key={country} color="#8F999F" fontSize="sm" fontWeight="semibold">
-                        {country}
-                      </ListItem>
-                    ))}
-                  </SimpleGrid>
-                </UnorderedList>
-              </Box>
+              <EmissionBox days={data.days} co2kilograms={data.co2kilograms} countries={data.countries} />
             </VStack>
           </HStack>
         </>

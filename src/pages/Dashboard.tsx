@@ -8,7 +8,7 @@ export const Dashboard = () => {
   const { data, fetchNextPage, hasNextPage } = useTrips();
 
   return (
-    <Container maxW="fit" bg="#E7E7E8" p="10">
+    <Container maxW="fit" p="10px">
       <InfiniteScroll
         next={fetchNextPage}
         hasMore={hasNextPage || false}
@@ -24,6 +24,7 @@ export const Dashboard = () => {
             page.map((trip) => (
               <Card
                 key={trip.id}
+                cardId={trip.id}
                 title={trip.title}
                 countriesLength={trip.countries?.length}
                 days={trip.days}

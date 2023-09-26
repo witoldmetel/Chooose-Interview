@@ -1,9 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import { Box, Button, Card as ChakraCard, CardBody, Center, Flex, Spacer, Text } from '@chakra-ui/react';
 
 import { convertKilosToTons, getPluralName } from '../../../utils';
 import { Rating } from '../Rating/Rating';
 
 type CardProps = {
+  cardId: number;
   title: string;
   countriesLength: number;
   days: number;
@@ -12,7 +14,9 @@ type CardProps = {
   bgImage: string;
 };
 
-export const Card = ({ title, countriesLength, days, rating, co2kilograms, bgImage }: CardProps) => {
+export const Card = ({ cardId, title, countriesLength, days, rating, co2kilograms, bgImage }: CardProps) => {
+  const navigate = useNavigate();
+
   return (
     <Box p={3} bg="#fff" rounded="xl">
       <ChakraCard bgImage={bgImage} bgSize="cover" bgPosition="50%" boxShadow="none" h="100%">
@@ -50,6 +54,7 @@ export const Card = ({ title, countriesLength, days, rating, co2kilograms, bgIma
                   _focus={{
                     bg: 'blue.700',
                   }}
+                  onClick={() => navigate(`/trips/${cardId}`)}
                 >
                   <Text fontSize="sm" color="#fff" fontWeight="semibold" cursor="pointer">
                     Learn more
